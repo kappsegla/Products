@@ -6,7 +6,7 @@
         {
         }
 
-        public Product(string name,int id, string description, float weight, Size size, bool instock = false )
+        public Product(string name,int id, string description, float weight, Size size, int price, bool instock = false )
         {
             ProductName = name;
             ProductID = id;
@@ -14,6 +14,7 @@
             Weight = weight;
             InStock = instock;
             ProductSize = size;
+            Price = price;
         }
        
         public string ProductName { get; set; }
@@ -21,6 +22,7 @@
         public string ProductDescription { get; set; }
         public float Weight { get; set; }
         public bool InStock { get; set; }
+        public int Price { get; set; }
 
         public Size ProductSize { get; set; }
     }

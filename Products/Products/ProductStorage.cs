@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Products
@@ -39,6 +40,15 @@ namespace Products
                     break;
                 }
             }
+        }
+
+        public List<Product> ProductsSortedByPrice()
+        {
+            var subset = from product in productdb
+                         orderby product.Price
+                         select product;
+
+            return subset.ToList<Product>();
         }
     }
 }

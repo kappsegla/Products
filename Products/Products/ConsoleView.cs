@@ -19,7 +19,7 @@ namespace Products
         
             foreach (var item in list)
             {
-                Console.WriteLine(item.ProductName);
+                Console.WriteLine(String.Format("{0} : {1} kr.", item.ProductName,item.Price));
             }
         }
     }
