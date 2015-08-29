@@ -11,8 +11,8 @@ namespace WebApplication1.Models
             public string Genre { get; set; }
             public decimal Price { get; set; }
     }
-    public class MovieDBContext : DbContext
+    public class ProductDBContext : DbContext
     {
-        public DbSet<Movie> Movies { get; set; }
+        public DbSet<Product> Products { get; set; }
     }
 }
