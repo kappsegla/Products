@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Tweetinvi.Core.Interfaces.ITweet>
+@{
+    ViewBag.Title = "Twitter";
+}
+
+<h2>Twitter Search</h2>
+@using (Html.BeginForm("Twitter", "Products", FormMethod.Get))
+{
+    <p>
+        @Html.TextBox("search")
+        <input type="submit" value="Search" />
+    </p>
+}
+@foreach (var t in Model)
+{
+  <div>@t.CreatedBy.Name</div>
+  <div>@t.Text</div>
+  foreach(var m in t.Media)
+  { 
+  <img src="@m.MediaURL" width=150 height=150/>
+  }
+}
+

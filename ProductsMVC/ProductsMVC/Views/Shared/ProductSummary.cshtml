@@ -1,0 +1,21 @@
+﻿@model ProductsMVC.Models.Product
+<h3>@Model.Name</h3>
+@Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+@Html.ActionLink("Details", "Details", new { id = Model.ID }) |
+@Html.ActionLink("Delete", "Delete", new { id = Model.ID })
+<span class="">@Model.Price.ToString("c")</span>
+<img src="http://www.jhnsport.se/shop/ws10/37610/art10/h5055/21815055-origpic-575597.png" width="100" height="100" alt="@Model.Name" class="img-rounded">
+<br />
+@using (Html.BeginForm("AddToCart", "Cart"))
+{
+    <div class="pull-right">
+        @Html.HiddenFor(x => x.ID)
+        @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+        <input type="submit" class="btn btn-success" value="Add to cart" />
+    </div>    
+}
+
+
+@*@Html.ActionLink("Add To Cart", "AddItem",
+    new { controller = "Cart", id = Model.ID },
+    new { @class = "btn btn-success" })*@

@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "SinglePage";
+}
+<h2>SinglePage</h2>
+<div id="id01"></div>
+@section Scripts {
+ <script>
+        var xmlhttp = new XMLHttpRequest();
+        var url = "http://localhost:53284/api/Products";
+
+         xmlhttp.onreadystatechange=function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                myFunction(xmlhttp.responseText);
+            }
+         }
+         xmlhttp.open("GET", url, true);
+         xmlhttp.setRequestHeader('Accept', 'application/json; charset=utf-8');
+         xmlhttp.send();
+
+        function myFunction(response) {
+            var arr = JSON.parse(response);
+            var i;
+            var out = "<table>";
+
+            for(i = 0; i < arr.length; i++) {
+                out += "<tr><td>" +
+                arr[i].Articlenumber +
+                "</td><td>" +
+                arr[i].Name +
+                "</td><td>" +
+                arr[i].Price +
+                "</td></tr>";
+            }
+            out += "</table>";
+            document.getElementById("id01").innerHTML = out;
+        }
+        </script>
+    @*
+    <script>
+        var url = "http://localhost:53284/api/Products";
+        $.getJSON(url, function (result) {
+            $.each(result, function (i, field) {
+                $("#id01").append("<div>" + field.Name + " " + field.Price + "</div>");
+            });
+        });
+    </script>
+   *@
+            @*<script>
+        //Create new Product
+        var url = "http://localhost:53284/api/Products";
+        var product = { Name: "Fiat", Price: 100000, ArticleNumber: 3456, CategoryId:1 };
+        $.post(url, product);
+         </script>
+            *@
+    @*<script>
+        //Update
+        var url = "http://localhost:53284/api/Products/3456";
+        var product = { Name: "Fiat 500X", Price: 200000, ArticleNumber: 3456, CategoryID: 1, ID: 1005 };
+        $.ajax({
+            url: url,
+            dataType: "json",
+            type: "PUT",
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(product)});
+    </script>*@
+@*<script>
+        //Delete
+        var url = "http://localhost:53284/api/Products/3456";
+        $.ajax({
+            url: url,
+            dataType: "json",
+            type: "DELETE",
+            contentType: 'application/json; charset=utf-8'
+        });
+</script>
+*@
+}
+
+
